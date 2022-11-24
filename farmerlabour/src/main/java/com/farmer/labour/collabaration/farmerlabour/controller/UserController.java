@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.farmer.labour.collabaration.farmerlabour.model.FarmerLabourUser;
-import com.farmer.labour.collabaration.farmerlabour.service.UserServiceInf;
 import com.farmer.labour.collabaration.farmerlabour.utility.JwtUtil;
 import  com.farmer.labour.collabaration.farmerlabour.model.UserRequest;
 import  com.farmer.labour.collabaration.farmerlabour.model.UserResponse;
+import com.farmer.labour.collabaration.farmerlabour.service.interfaces.UserServiceInf;
 
 @RestController
 @RequestMapping("/user")
@@ -32,11 +32,8 @@ public class UserController {
     
     @Autowired
 	private JwtUtil jwtUtil;
-    
 
-
-
-
+    /* save basic farmerLabourUserDetails */
     @PostMapping("/save")
     public ResponseEntity<String> saveUser(@RequestBody FarmerLabourUser user){
         Integer userId= userServiceInf.save(user);

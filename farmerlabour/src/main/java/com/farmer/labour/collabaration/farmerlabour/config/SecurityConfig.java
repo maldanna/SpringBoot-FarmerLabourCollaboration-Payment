@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.farmer.labour.collabaration.farmerlabour.config.filter.SecurityFilter;
-import com.farmer.labour.collabaration.farmerlabour.service.UserServiceImpl;
+import com.farmer.labour.collabaration.farmerlabour.service.impl.UserServiceImpl;
 
 @Configuration
 @EnableWebSecurity
