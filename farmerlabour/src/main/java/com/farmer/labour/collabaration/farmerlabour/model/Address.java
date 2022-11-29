@@ -13,7 +13,7 @@ import lombok.Data;
 public class Address {
     
 @Id
-private String userName;
+private String phone;
 private String village;
 private String mandal;
 private String district;

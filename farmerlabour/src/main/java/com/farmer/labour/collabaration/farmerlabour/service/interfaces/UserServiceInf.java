@@ -6,8 +6,9 @@ import com.farmer.labour.collabaration.farmerlabour.model.FarmerLabourUser;
 
 public interface UserServiceInf {
     public String save(FarmerLabourUser user);
+    public String register(FarmerLabourUser user);
     public String update(FarmerLabourUser user);
-    public FarmerLabourUser getUser(String userName);
+    public FarmerLabourUser getUser(String phone);
     public List<FarmerLabourUser> getAlluser();
     public String deleteUser(String userName);
 

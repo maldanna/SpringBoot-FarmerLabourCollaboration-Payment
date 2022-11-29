@@ -57,7 +57,7 @@ public class SecurityConfig {
         http
             .csrf(csrf->csrf.ignoringAntMatchers("/h2-console/**"))
             .authorizeRequests()
-            .antMatchers("/h2-console/**","/user/save","/user/login").permitAll()
+            .antMatchers("/h2-console/**","/user/register","/user/login").permitAll()
             .anyRequest().authenticated().and()
             // .userDetailsService(uServiceImpl) for basic or form based authentication
             .exceptionHandling().authenticationEntryPoint(this.jwtAuthenticationEntryPoint)
@@ -67,7 +67,6 @@ public class SecurityConfig {
             //.httpBasic(Customizer.withDefaults()); for rhttpbasic authentication // order imporrtant see  spring security doc
         //http.addFilterBefore(jwtFilter,UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 }

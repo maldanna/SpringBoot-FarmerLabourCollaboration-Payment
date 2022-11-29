@@ -2,7 +2,6 @@ package com.farmer.labour.collabaration.farmerlabour.model;
 
 import java.sql.Blob;
 import java.util.Set;
-
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -10,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,12 +21,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FarmerLabourUser{
-    @Id
-    private String username;
+
+    @Id @NotBlank @NotNull
+    private String  phone;
     private String name;
+    @NotBlank @NotNull
     private String password;
     private String email;
-    private String  phone;
     private Blob image;
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(

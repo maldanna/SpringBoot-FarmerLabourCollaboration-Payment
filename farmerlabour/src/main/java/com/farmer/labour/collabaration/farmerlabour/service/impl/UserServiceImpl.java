@@ -29,30 +29,31 @@ public class UserServiceImpl implements UserServiceInf,UserDetailsService{
     public String save(FarmerLabourUser user){
         // encode password
         user.setPassword(pswEncoder.encode(user.getPassword()));
-        String userName = userRepo.save(user).getUsername();
+        String userName = userRepo.save(user).getName();
         return userName;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
         System.out.println("loadUserByUsername method called");
-        FarmerLabourUser user= userRepo.findByUsername(username);//get model user but we should have userrdetailes serrvice
+        FarmerLabourUser user= userRepo.findByPhone(phone);//get model user but we should have userrdetailes serrvice
         // prepare security user
-        System.out.println("security user is: "+user.getUsername() +"  password is:"+user.getPassword());
-        return new User(username,user.getPassword(),user.getRoles().stream().map(role->new SimpleGrantedAuthority(role)).collect(Collectors.toList()));
+        System.out.println("security user is: "+user.getPhone() +"  password is:"+user.getPassword());
+        return new User(phone,user.getPassword(),user.getRoles().stream().map(role->new SimpleGrantedAuthority(role)).collect(Collectors.toList()));
     }
 
     @Override
     public String update(FarmerLabourUser user) {
-        user.setPassword(pswEncoder.encode(user.getPassword()));
-        String userName = userRepo.save(user).getUsername();
-        return userName;
+        String userName = userRepo.save(user).getName();
+        return userName + " user updated successfully!!";
     }
 
     @Override
-    public FarmerLabourUser getUser(String userName) {
-        FarmerLabourUser user=userRepo.findByUsername(userName);
-        return null;
+    public FarmerLabourUser getUser(String phone) {
+        System.out.println("came into get user");
+        FarmerLabourUser user=userRepo.findByPhone(phone);
+        System.out.println("get user is: "+user.getPhone());
+        return user;
     }
 
     @Override
@@ -62,10 +63,16 @@ public class UserServiceImpl implements UserServiceInf,UserDetailsService{
     }
 
     @Override
-    public String deleteUser(String userName) {
-        FarmerLabourUser user=userRepo.findByUsername(userName);
+    public String deleteUser(String phone) {
+        FarmerLabourUser user=userRepo.findByPhone(phone);
         userRepo.delete(user);
         return "user deleted successfully!!";
+    }
+
+    @Override
+    public String register(FarmerLabourUser user) {
+        String userName=userRepo.save(user).getName();
+        return userName;
     }
     
 }

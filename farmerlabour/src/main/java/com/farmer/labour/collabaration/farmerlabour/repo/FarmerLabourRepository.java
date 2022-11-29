@@ -6,7 +6,6 @@ import com.farmer.labour.collabaration.farmerlabour.model.FarmerLabourUser;
 
 public interface FarmerLabourRepository extends JpaRepository<FarmerLabourUser,Integer> {
 
-    FarmerLabourUser findByUsername(String username);
-    FarmerLabourUser 
-    
+    FarmerLabourUser findByPhone(String phone);
+
 }
