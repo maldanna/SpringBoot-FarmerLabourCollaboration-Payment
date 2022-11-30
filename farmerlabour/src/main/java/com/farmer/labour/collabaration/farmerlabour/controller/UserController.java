@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.farmer.labour.collabaration.farmerlabour.model.Address;
 import com.farmer.labour.collabaration.farmerlabour.model.FarmerLabourUser;
 import com.farmer.labour.collabaration.farmerlabour.utility.JwtUtil;
 import  com.farmer.labour.collabaration.farmerlabour.model.UserRequest;
 import  com.farmer.labour.collabaration.farmerlabour.model.UserResponse;
+import com.farmer.labour.collabaration.farmerlabour.service.interfaces.AddressInf;
 import com.farmer.labour.collabaration.farmerlabour.service.interfaces.UserServiceInf;
 
 @RestController
@@ -25,6 +26,9 @@ public class UserController {
     
     @Autowired
     UserServiceInf userServiceInf;
+
+    @Autowired
+    AddressInf addressInf;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -80,7 +84,17 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
+    @PostMapping("/addaddress")
+    public ResponseEntity<String> addAddress(@RequestBody Address address ){
+        String result=addressInf.addAddress(address);
+        return ResponseEntity.ok(result);
+    }
 
+    @PostMapping("/updateaddress")
+    public ResponseEntity<String> updateAddress(@RequestBody Address address ){
+        String result=addressInf.updateAddress(address);
+        return ResponseEntity.ok(result);
+    }
 
     @GetMapping("/welcome")
 	public ResponseEntity<String> accessUserData() {

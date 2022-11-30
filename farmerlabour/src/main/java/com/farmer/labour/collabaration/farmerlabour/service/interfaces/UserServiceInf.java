@@ -11,5 +11,4 @@ public interface UserServiceInf {
     public FarmerLabourUser getUser(String phone);
     public List<FarmerLabourUser> getAlluser();
     public String deleteUser(String userName);
-
 }

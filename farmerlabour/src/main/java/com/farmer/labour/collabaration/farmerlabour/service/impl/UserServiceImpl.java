@@ -74,5 +74,6 @@ public class UserServiceImpl implements UserServiceInf,UserDetailsService{
         String userName=userRepo.save(user).getName();
         return userName;
     }
-    
+
+
 }
