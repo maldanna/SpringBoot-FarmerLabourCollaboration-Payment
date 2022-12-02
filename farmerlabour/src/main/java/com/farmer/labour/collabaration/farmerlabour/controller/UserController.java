@@ -96,10 +96,18 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/welcome")
-	public ResponseEntity<String> accessUserData() {
-		return ResponseEntity.ok("Hello user");
-	}
+    @GetMapping("/getaddressById/{phone}/{addressNumber}")
+    public ResponseEntity<Address> getAddressById(@PathVariable String phone,@PathVariable String addressNumber){
+        Address address=addressInf.getAddressById(phone,addressNumber);
+        return ResponseEntity.ok(address);
+    }
+
+    @GetMapping("/getaddress/{phone}")
+    public ResponseEntity<List<Address>> getAddress(@PathVariable String phone){
+        List<Address> address=addressInf.getAddress(phone);
+        return ResponseEntity.ok(address);
+    }
+
 
     
     

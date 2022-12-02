@@ -1,5 +1,7 @@
 package com.farmer.labour.collabaration.farmerlabour.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,14 +27,14 @@ public class AddressImpl implements AddressInf {
     }
 
     @Override
-    public Address getAddress(String phone) {
-        Address addrress=userAddressRepo.findByPhone(phone);
-        return addrress;
+    public List<Address> getAddress(String phone) {
+        List<Address> address=userAddressRepo.findByPhone(phone);
+        return address;
     }
 
     @Override
     public Address getAddressById(String phone, String addressNumber) {
-        Address addrress=userAddressRepo.findByPhoneAndaddressNumber(phone,addressNumber);
+        Address addrress=userAddressRepo.findByPhoneAndAddressNumber(phone,addressNumber);
         return addrress;
     }
     

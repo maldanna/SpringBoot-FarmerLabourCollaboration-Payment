@@ -1,5 +1,7 @@
 package com.farmer.labour.collabaration.farmerlabour.model;
 
+import java.sql.Date;
+
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
@@ -19,9 +21,8 @@ public class WorkAction {
     private String farmerName;
     @Id
     private String labourName;
-    private String startdate;
-    private String enddate;
-       
+    private  Date actionStartDate;
+    private  Date actionEndDate; 
 }
 
 
