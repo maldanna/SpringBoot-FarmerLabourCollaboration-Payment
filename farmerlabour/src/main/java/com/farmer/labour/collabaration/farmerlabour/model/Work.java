@@ -2,7 +2,7 @@ package com.farmer.labour.collabaration.farmerlabour.model;
 
 import java.sql.Date;
 
-import javax.annotation.Generated;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,9 +26,8 @@ public class Work {
     private String farmerPhone;
     private String workName;
     private String workAddress;
-    private String noOfdays;
+    private int noOfdays;
     private int amountPerDay;
     private Date startDate;
     private Date endDate;
-   
 }

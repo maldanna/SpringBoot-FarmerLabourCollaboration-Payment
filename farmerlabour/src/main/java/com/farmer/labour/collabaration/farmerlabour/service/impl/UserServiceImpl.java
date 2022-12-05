@@ -12,7 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.farmer.labour.collabaration.farmerlabour.model.FarmerLabourUser;
+import com.farmer.labour.collabaration.farmerlabour.model.Subscription;
 import com.farmer.labour.collabaration.farmerlabour.repo.FarmerLabourRepository;
+import com.farmer.labour.collabaration.farmerlabour.repo.SubscriptionRepo;
 import com.farmer.labour.collabaration.farmerlabour.service.interfaces.UserServiceInf;
 
 @Service
@@ -23,6 +25,9 @@ public class UserServiceImpl implements UserServiceInf,UserDetailsService{
 
     @Autowired
     BCryptPasswordEncoder pswEncoder;
+
+    @Autowired
+    SubscriptionRepo subscriptionRepo;
     
 
     @Override
@@ -73,6 +78,18 @@ public class UserServiceImpl implements UserServiceInf,UserDetailsService{
     public String register(FarmerLabourUser user) {
         String userName=userRepo.save(user).getName();
         return userName;
+    }
+
+    @Override
+    public Subscription subscribe(Subscription subscribtion) {
+        Subscription subscription=subscriptionRepo.save(subscribtion);
+        return null;
+    }
+
+    @Override
+    public List<Subscription> getSubscribers(String farmerphone) {
+        List<Subscription> subscribers=subscriptionRepo.findByFarmerPhone(farmerphone);
+        return subscribers;
     }
 
 

@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.farmer.labour.collabaration.farmerlabour.model.Work;
 
+
 public interface WorkInf {
-    public String addWork(Work work);
-    public String updateWork(Work work);
-    public List<Work> getWorks(String phone);
+    public Work addWork(Work work,String phone,int addressnumber);
+    public Work updateWork(Work work,String phone,int addressnumber);
+    public List<Work> getWorksByPhone(String phone);
     public Work getWorkById(int workId,String phone);
     public Work deleteWork(Work work);
     public List<Work> getAllWorks();

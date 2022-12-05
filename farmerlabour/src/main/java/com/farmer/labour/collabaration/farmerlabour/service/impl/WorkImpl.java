@@ -3,11 +3,13 @@ package com.farmer.labour.collabaration.farmerlabour.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.farmer.labour.collabaration.farmerlabour.model.Work;
 import com.farmer.labour.collabaration.farmerlabour.repo.WorkRepo;
 import com.farmer.labour.collabaration.farmerlabour.service.interfaces.WorkInf;
 
+@Service
 public class WorkImpl implements WorkInf {
 
     @Autowired
@@ -15,23 +17,24 @@ public class WorkImpl implements WorkInf {
 
 
     @Override
-    public String addWork(Work work) {
-
-        int workId=workRepo.save(work).getWorkId();
-        return "successfully work created with Id: "+workId;
+    public Work addWork(Work work,String phone,int addressnumber) {
+        // update address filed based on phone and workNumber
+        work.setWorkAddress(phone+"-"+addressnumber);
+        Work resWork=workRepo.save(work);
+        return resWork;
         
     }
 
 
     @Override
-    public String updateWork(Work work) {
-        int workId=workRepo.save(work).getWorkId();
-        return "work with workId: "+workId + " successfully updated";
+    public Work updateWork(Work work,String phone,int addressnumber) {
+        work.setWorkAddress(phone+"-"+addressnumber);
+        Work resWork=workRepo.save(work);
+        return resWork;
     }
 
-
     @Override
-    public List<Work> getWorks(String phone) {
+    public List<Work> getWorksByPhone(String phone) {
         List<Work> worksByphone=workRepo.findByFarmerPhone(phone);
         return worksByphone;
     }
@@ -54,13 +57,13 @@ public class WorkImpl implements WorkInf {
     @Override
     public List<Work> getAllWorks() {
         List<Work> allWorks=workRepo.findAll();
-        return null;
+        return allWorks;
     }
 
 
     @Override
     public String notifySubscribedLaboursOnWorkActions() {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
