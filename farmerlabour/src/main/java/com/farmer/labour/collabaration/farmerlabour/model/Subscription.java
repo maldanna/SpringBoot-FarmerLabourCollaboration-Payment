@@ -4,15 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
-@Entity
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @IdClass(SubscriptionPrimaryKey.class)
 public class Subscription {
 
     @Id
     private String farmerPhone;
     @Id
-    private String  LaboourPhone;
+    private String  LabourPhone;
 
     
 }

@@ -5,5 +5,5 @@ import java.io.Serializable;
 
 public class SubscriptionPrimaryKey implements Serializable {
     private String farmerPhone;
-    private String  LaboourPhone;
+    private String  LabourPhone;
 }
