@@ -18,7 +18,7 @@ public class Subscription {
     @Id
     private String farmerPhone;
     @Id
-    private String  LabourPhone;
+    private String  labourPhone;
 
     
 }

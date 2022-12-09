@@ -1,10 +1,12 @@
 package com.farmer.labour.collabaration.farmerlabour.service.interfaces;
 
-import java.util.List;
+
+
+import com.farmer.labour.collabaration.farmerlabour.model.Work;
 
 public interface SubscriptionInf {
 
-    List<String> getSubscribedLaboursEmailIds(); 
+    void notifySubscribedLaboursOnWorkActions(Work work); 
 
     
 }

@@ -12,8 +12,8 @@ public interface WorkInf {
     public Work getWorkById(int workId,String phone);
     public Work deleteWork(Work work);
     public List<Work> getAllWorks();
-    public String notifySubscribedLaboursOnWorkActions();
-    public String notifyAcceptedLaboursOnUpdateOrDelete();
+   // public String notifySubscribedLaboursOnWorkActions(Work work);
+   // public String notifyAcceptedLaboursOnUpdateOrDelete();
     
 
 }

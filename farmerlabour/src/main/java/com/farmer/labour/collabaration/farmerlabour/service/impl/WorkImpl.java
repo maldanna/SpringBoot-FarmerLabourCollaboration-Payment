@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.farmer.labour.collabaration.farmerlabour.model.Work;
 import com.farmer.labour.collabaration.farmerlabour.repo.WorkRepo;
+import com.farmer.labour.collabaration.farmerlabour.service.interfaces.SubscriptionInf;
 import com.farmer.labour.collabaration.farmerlabour.service.interfaces.WorkInf;
 
 @Service
@@ -15,16 +16,18 @@ public class WorkImpl implements WorkInf {
     @Autowired
     WorkRepo workRepo;
 
+    @Autowired
+    SubscriptionInf subscriptionInf;
+
 
     @Override
     public Work addWork(Work work,String phone,int addressnumber) {
         // update address filed based on phone and workNumber
         work.setWorkAddress(phone+"-"+addressnumber);
         Work resWork=workRepo.save(work);
-        return resWork;
-        
+        subscriptionInf.notifySubscribedLaboursOnWorkActions(null); 
+        return resWork;       
     }
-
 
     @Override
     public Work updateWork(Work work,String phone,int addressnumber) {
@@ -61,7 +64,21 @@ public class WorkImpl implements WorkInf {
     }
 
 
+   /*  @Override
+    public String notifySubscribedLaboursOnWorkActions(Work work) {
+        subscriptionInf.notifySubscribedLaboursOnWorkActions(null);   
+        return null;
+    }
+
+
     @Override
+    public String notifyAcceptedLaboursOnUpdateOrDelete() {
+        return null;
+    }
+*/
+
+
+  /*   @Override
     public String notifySubscribedLaboursOnWorkActions() {
         
         return null;
@@ -73,6 +90,8 @@ public class WorkImpl implements WorkInf {
         // TODO Auto-generated method stub
         return null;
     }
+    */
+
 
 
     
