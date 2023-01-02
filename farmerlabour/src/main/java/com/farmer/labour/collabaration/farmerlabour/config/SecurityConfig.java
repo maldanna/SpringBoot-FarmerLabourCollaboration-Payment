@@ -62,7 +62,7 @@ public class SecurityConfig {
             // .userDetailsService(uServiceImpl) for basic or form based authentication
             .exceptionHandling().authenticationEntryPoint(this.jwtAuthenticationEntryPoint)
              .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-              .and()
+             .and()
             .csrf().disable();
             //.httpBasic(Customizer.withDefaults()); for rhttpbasic authentication // order imporrtant see  spring security doc
         //http.addFilterBefore(jwtFilter,UsernamePasswordAuthenticationFilter.class);
