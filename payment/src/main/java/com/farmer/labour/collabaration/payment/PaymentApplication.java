@@ -1,15 +1,14 @@
-package com.farmer.labour.collabaration.farmerlabour;
+package com.farmer.labour.collabaration.payment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
-public class FarmerlabourApplication {
+public class PaymentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FarmerlabourApplication.class, args);
-
+		SpringApplication.run(PaymentApplication.class, args);
+		System.out.println("Hello Payment service!!");
 	}
 
 }
